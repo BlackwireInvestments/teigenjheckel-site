@@ -1,9 +1,18 @@
-// POST /api/stripe-webhook  — Stripe calls this when a payment completes.
-// Verifies the signature, then creates + CONFIRMS a Printful order (auto-fulfill).
-// Needs the raw request body for signature verification (bodyParser disabled below).
+// POST /api/stripe-webhook — Stripe calls this on payment completion.
+// Verifies signature, then creates + CONFIRMS a Printful order (auto-fulfill).
 const Stripe = require('stripe');
-const { pf } = require('../lib/printful');
-
+const PF_BASE = 'https://api.printful.com';
+function pfHeaders() {
+  const h = { Authorization: `Bearer ${process.env.PRINTFUL_TOKEN}`, 'Content-Type': 'application/json' };
+  if (process.env.PRINTFUL_STORE_ID) h['X-PF-Store-Id'] = process.env.PRINTFUL_STORE_ID;
+  return h;
+}
+async function pf(path, opts = {}) {
+  const r = await fetch(PF_BASE + path, { ...opts, headers: { ...pfHeaders(), ...(opts.headers || {}) } });
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(`Printful ${r.status}: ${JSON.stringify(data).slice(0, 300)}`);
+  return data.result;
+}
 function rawBody(req) {
   return new Promise((resolve, reject) => {
     const chunks = [];
@@ -31,11 +40,7 @@ async function handler(req, res) {
       const full = await stripe.checkout.sessions.retrieve(s.id);
       const ship = full.shipping_details || full.customer_details;
       const a = ship.address;
-      const items = JSON.parse(full.metadata.pf || '[]').map((i) => ({
-        sync_variant_id: i.v,
-        quantity: i.q,
-      }));
-      // confirm=1 submits the order straight to production = automatic fulfillment
+      const items = JSON.parse(full.metadata.pf || '[]').map((i) => ({ sync_variant_id: i.v, quantity: i.q }));
       await pf('/orders?confirm=1', {
         method: 'POST',
         body: JSON.stringify({
@@ -61,10 +66,8 @@ async function handler(req, res) {
       return;
     }
   }
-
   res.status(200).json({ received: true });
 }
 
 module.exports = handler;
-// keep Stripe's raw body intact for signature verification
 module.exports.config = { api: { bodyParser: false } };
