@@ -1,0 +1,9 @@
+{
+  "name": "teigenjheckel-commerce",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stripe + Printful checkout engine for teigenjheckel.org",
+  "dependencies": {
+    "stripe": "^16.12.0"
+  }
+}
