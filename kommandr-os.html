@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kommandr OS — Buy &amp; Run Live | Teigen J. Heckel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   KOMMANDR OS — landing page  (scoped under #kos)
+   Brand: CEO Gold #c5a55a · Digital Cyan #00d4ff · Dark #0a0a0f
+   Built for embedding in GoHighLevel (Teigen J. Heckel Store)
+   ============================================================ */
+html,body{background:#0a0a0f !important;margin:0;padding:0}
+#kos *{margin:0;padding:0;box-sizing:border-box}
+#kos{
+  --gold:#c5a55a; --gold-lite:#e8cf94; --cyan:#00d4ff; --mint:#4ade80;
+  --coral:#f87171; --violet:#b794f6;
+  --bg:#0a0a0f; --bg2:#0c0c12; --panel:rgba(255,255,255,.025);
+  --line:rgba(255,255,255,.08); --txt:#f5f5f7; --mut:#9b9ba6; --mut2:#6f6f7a;
+  font-family:'Manrope',system-ui,-apple-system,sans-serif;
+  background:var(--bg); color:var(--txt); line-height:1.55;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+#kos a{color:inherit;text-decoration:none}
+#kos .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+#kos .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);font-weight:500}
+#kos .gold{color:var(--gold)}#kos .mint{color:var(--mint)}#kos .cyan{color:var(--cyan)}
+#kos .coral{color:var(--coral)}
+#kos h1,#kos h2,#kos h3{font-weight:800;letter-spacing:-.02em;line-height:1.04}
+#kos section{position:relative}
+
+/* ---- nav ---- */
+#kos .nav{position:sticky;top:0;z-index:50;background:rgba(10,10,15,.72);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+#kos .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+#kos .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;letter-spacing:-.01em}
+#kos .logo{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#1a160c,#0f0d08);border:1px solid rgba(197,165,90,.4)}
+#kos .logo svg{width:20px;height:20px}
+#kos .navlinks{display:flex;gap:34px;font-size:15px;color:var(--mut);font-weight:500}
+#kos .navlinks a:hover{color:var(--txt)}
+#kos .navright{display:flex;align-items:center;gap:22px}
+#kos .login{font-size:15px;color:var(--mut);font-weight:500}
+#kos .login:hover{color:var(--txt)}
+#kos .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:15px;
+  border-radius:11px;padding:12px 22px;cursor:pointer;transition:.18s;border:1px solid transparent}
+#kos .btn-gold{background:linear-gradient(135deg,var(--gold-lite),var(--gold));color:#1a1408;
+  box-shadow:0 6px 26px rgba(197,165,90,.28)}
+#kos .btn-gold:hover{transform:translateY(-1px);box-shadow:0 10px 34px rgba(197,165,90,.4)}
+#kos .btn-ghost{background:transparent;border-color:var(--line);color:var(--txt)}
+#kos .btn-ghost:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.03)}
+
+/* ---- hero ---- */
+#kos .hero{text-align:center;padding:48px 0 70px;
+  background:radial-gradient(1100px 520px at 50% -8%,rgba(197,165,90,.10),transparent 60%)}
+#kos .pill{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);
+  border-radius:999px;padding:9px 20px;background:rgba(255,255,255,.02);margin-bottom:34px}
+#kos .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+#kos .hero h1{font-size:clamp(44px,7vw,92px);margin-bottom:30px}
+#kos .hero h1 .l3{background:linear-gradient(120deg,var(--gold-lite),var(--gold));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+#kos .lede{max-width:760px;margin:0 auto 38px;font-size:clamp(17px,2vw,21px);color:var(--mut);line-height:1.65}
+#kos .lede b{color:var(--txt);font-weight:700}
+#kos .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+#kos .cta-row .btn{padding:16px 30px;font-size:16px}
+#kos .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+#kos .chip{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;
+  color:var(--mut2);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+
+/* ---- stat bar ---- */
+#kos .statbar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:var(--bg2);padding:42px 0}
+#kos .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+#kos .stat .big{font-size:46px;font-weight:800;color:var(--gold);letter-spacing:-.02em;line-height:1}
+#kos .stat .lab{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--mut2);margin-top:10px}
+
+/* ---- live cards ---- */
+#kos .live{padding:64px 0;text-align:center}
+#kos .live-head{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;
+  color:var(--mut);margin-bottom:30px;display:flex;gap:9px;align-items:center;justify-content:center}
+#kos .live-head .d{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint)}
+#kos .live-grid{display:grid;grid-template-columns:repeat(2,minmax(0,340px));gap:22px;justify-content:center}
+#kos .live-card{border:1px solid var(--line);border-radius:18px;padding:34px;background:var(--panel)}
+#kos .live-card.g{border-color:rgba(197,165,90,.3);background:rgba(197,165,90,.04)}
+#kos .live-card.c{border-color:rgba(0,212,255,.25);background:rgba(0,212,255,.04)}
+#kos .live-card .num{font-size:46px;font-weight:800;margin:14px 0 4px;letter-spacing:-.02em}
+#kos .live-card.g .num{color:var(--gold)}#kos .live-card.c .num{color:var(--cyan)}
+#kos .live-card .cap{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--mut2)}
+
+/* ---- section heading ---- */
+#kos .sec{padding:88px 0}
+#kos .sec.alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#kos .shead{text-align:center;max-width:780px;margin:0 auto 56px}
+#kos .shead .eyebrow{display:block;margin-bottom:18px}
+#kos .shead h2{font-size:clamp(32px,4.6vw,52px);margin-bottom:20px}
+#kos .shead p{color:var(--mut);font-size:17px;line-height:1.65}
+
+/* ---- crew ---- */
+#kos .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+#kos .card{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--panel);
+  transition:.2s}
+#kos .card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.16)}
+#kos .card.glow-gold{border-color:rgba(197,165,90,.45);box-shadow:0 0 0 1px rgba(197,165,90,.12),0 18px 50px -28px rgba(197,165,90,.5)}
+#kos .card.glow-mint{border-color:rgba(74,222,128,.4);box-shadow:0 0 0 1px rgba(74,222,128,.1),0 18px 50px -28px rgba(74,222,128,.45)}
+#kos .ctop{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+#kos .cname{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;
+  font-weight:700;font-size:14px;letter-spacing:.14em}
+#kos .cname svg{width:18px;height:18px}
+#kos .badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;font-weight:700;
+  padding:4px 11px;border-radius:999px;border:1px solid}
+#kos .b-live{color:var(--mint);border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.08)}
+#kos .b-soon{color:var(--gold);border-color:rgba(197,165,90,.4);background:rgba(197,165,90,.07)}
+#kos .card h3{font-size:20px;font-weight:800;margin-bottom:10px;color:var(--txt)}
+#kos .card p{color:var(--mut);font-size:14.5px;line-height:1.6}
+#kos .c-gold .cname{color:var(--gold)}#kos .c-cyan .cname{color:var(--cyan)}
+#kos .c-violet .cname{color:var(--violet)}#kos .c-mut .cname{color:var(--mut)}
+
+/* ---- box / gen lists ---- */
+#kos .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+#kos .box{border-radius:18px;padding:34px;background:var(--panel);border:1px solid var(--line)}
+#kos .box.gen1{border-color:rgba(74,222,128,.32)}
+#kos .box.gen2{border-color:rgba(197,165,90,.32)}
+#kos .box .btop{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+#kos .box .ksub{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--mut)}
+#kos .box h3{font-size:24px;margin:6px 0 22px}
+#kos .box ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+#kos .box li{display:flex;gap:12px;font-size:15px;color:var(--mut);line-height:1.5}
+#kos .box li b{color:var(--txt);font-weight:700}
+#kos .box li .ic{flex:0 0 18px;margin-top:2px}
+#kos .gen1 li .ic{color:var(--mint)}#kos .gen2 li .ic{color:var(--gold)}
+#kos .box .foot{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;
+  color:var(--gold);margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+
+/* ---- steps ---- */
+#kos .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+#kos .step{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--panel)}
+#kos .step .n{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--gold);opacity:.55}
+#kos .step h3{font-size:18px;margin:14px 0 9px}
+#kos .step p{color:var(--mut);font-size:14px;line-height:1.55}
+
+/* ---- community ---- */
+#kos .commun{border:1px solid rgba(197,165,90,.3);border-radius:22px;padding:46px;
+  background:radial-gradient(700px 320px at 12% 0%,rgba(197,165,90,.08),transparent 60%),var(--panel);max-width:980px;margin:0 auto}
+#kos .commun .eyebrow{display:flex;gap:10px;align-items:center;margin-bottom:18px}
+#kos .commun h3{font-size:clamp(28px,3.4vw,40px);margin-bottom:8px}
+#kos .commun .sub{font-family:'JetBrains Mono',monospace;color:var(--mut);font-size:14px;margin-bottom:22px}
+#kos .commun .sub .gold{font-weight:700}
+#kos .commun>p{color:var(--mut);font-size:16px;max-width:680px;margin-bottom:26px;line-height:1.65}
+#kos .commun ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px}
+#kos .commun li{display:flex;gap:11px;font-size:14.5px;color:var(--mut)}
+#kos .commun li .ic{color:var(--gold);flex:0 0 18px}
+
+/* ---- pricing ---- */
+#kos .price-card{max-width:520px;margin:0 auto;border:1px solid rgba(197,165,90,.4);border-radius:22px;
+  padding:40px;background:radial-gradient(500px 300px at 50% 0%,rgba(197,165,90,.08),transparent),var(--panel);
+  box-shadow:0 30px 80px -40px rgba(197,165,90,.5)}
+#kos .price-card .ptop{display:flex;justify-content:space-between;align-items:flex-start}
+#kos .price-card .ksub{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--gold)}
+#kos .price-card h3{font-size:24px;margin:6px 0 18px}
+#kos .price-card .amt{display:flex;align-items:flex-end;gap:8px;margin-bottom:18px}
+#kos .price-card .amt .v{font-size:72px;font-weight:800;color:var(--gold);line-height:.9;letter-spacing:-.03em}
+#kos .price-card .amt .per{color:var(--mut);font-size:18px;margin-bottom:8px}
+#kos .price-card .trial{display:flex;align-items:center;gap:9px;border:1px solid rgba(74,222,128,.4);
+  background:rgba(74,222,128,.08);border-radius:11px;padding:11px 16px;font-family:'JetBrains Mono',monospace;
+  font-size:12px;letter-spacing:.12em;color:var(--mint);font-weight:700;margin-bottom:16px}
+#kos .price-card .fine{color:var(--mut);font-size:13.5px;line-height:1.6;margin-bottom:22px}
+#kos .price-card ul{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:26px}
+#kos .price-card li{display:flex;gap:11px;font-size:14.5px;color:var(--mut)}
+#kos .price-card li .ic{color:var(--mint);flex:0 0 18px}
+#kos .price-card .btn{width:100%;justify-content:center;padding:16px}
+#kos .price-flags{display:flex;gap:24px;justify-content:center;margin-bottom:36px;flex-wrap:wrap}
+#kos .price-flags span{display:flex;gap:8px;align-items:center;color:var(--mut);font-size:14px}
+#kos .price-flags .ic{color:var(--mint)}
+
+/* ---- pains ---- */
+#kos .pain h2 .coral{color:var(--coral)}
+#kos .pain .card .ic{color:var(--coral);margin-bottom:18px;display:block}
+#kos .pain .card h3{font-size:18px;margin-bottom:10px}
+#kos .pain .card p{font-size:14px}
+#kos .pain .card p .arrow{color:var(--gold);font-weight:700}
+
+/* ---- table ---- */
+#kos .cmp{max-width:980px;margin:0 auto;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+#kos table{width:100%;border-collapse:collapse;font-size:14.5px}
+#kos thead th{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mut2);text-align:left;padding:16px 22px;background:rgba(255,255,255,.02)}
+#kos tbody td{padding:15px 22px;border-top:1px solid var(--line);color:var(--mut)}
+#kos tbody td:first-child{color:var(--txt)}
+#kos tbody td.old{color:var(--coral);font-family:'JetBrains Mono',monospace}
+#kos tbody td.rep{color:var(--mint)}
+#kos tr.total td{background:rgba(255,255,255,.02);font-weight:700;border-top:2px solid var(--line)}
+#kos tr.total td:first-child{color:var(--txt)}
+#kos .cmp-note{text-align:center;color:var(--mut2);font-size:13px;margin-top:18px;max-width:760px;margin-left:auto;margin-right:auto}
+
+/* ---- final cta ---- */
+#kos .final{border:1px solid var(--line);border-radius:24px;text-align:center;padding:70px 30px;max-width:980px;
+  margin:0 auto;background:radial-gradient(700px 360px at 50% 0%,rgba(197,165,90,.10),transparent 65%),var(--panel)}
+#kos .final .spark{color:var(--gold);margin-bottom:22px}
+#kos .final h2{font-size:clamp(34px,5vw,58px);margin-bottom:20px}
+#kos .final p{color:var(--mut);font-size:17px;max-width:620px;margin:0 auto 30px;line-height:1.6}
+#kos .final .flags{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;
+  color:var(--mut2);margin-top:26px}
+
+/* ---- footer ---- */
+#kos footer{border-top:1px solid var(--line);background:var(--bg2);padding:56px 0 34px;margin-top:0}
+#kos .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;padding-bottom:34px;border-bottom:1px solid var(--line)}
+#kos .fgrid h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--mut2);
+  text-transform:uppercase;margin-bottom:16px;font-weight:500}
+#kos .fgrid p{color:var(--mut);font-size:14px;line-height:1.6;max-width:320px}
+#kos .fgrid a{display:block;color:var(--mut);font-size:14px;margin-bottom:11px}
+#kos .fgrid a:hover{color:var(--txt)}
+#kos .fbot{display:flex;justify-content:space-between;padding-top:24px;flex-wrap:wrap;gap:12px}
+#kos .fbot span{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--mut2)}
+
+/* ---- responsive ---- */
+@media(max-width:900px){
+  #kos .navlinks{display:none}
+  #kos .grid3,#kos .grid2,#kos .steps{grid-template-columns:1fr}
+  #kos .stat-grid{grid-template-columns:1fr 1fr;gap:32px 20px}
+  #kos .live-grid{grid-template-columns:1fr}
+  #kos .commun ul{grid-template-columns:1fr}
+  #kos .commun{padding:30px}
+  #kos .fgrid{grid-template-columns:1fr;gap:28px}
+  #kos .cmp{overflow-x:auto}
+}
+</style>
+</head>
+<body>
+<style>@media(max-width:980px){.kosnav>div{display:flex!important;flex-wrap:wrap!important;height:auto!important;padding:12px 20px!important;gap:10px!important;align-items:center!important}.kosnav>div>a:first-child{order:1}.kosnav>div>a:last-child{order:2;margin-left:auto!important}.kosnav nav{order:3!important;width:100%!important;display:flex!important;overflow-x:auto!important;white-space:nowrap!important;gap:20px!important;justify-content:flex-start!important}.kosnav nav::-webkit-scrollbar{display:none}}</style>
+<header class="kosnav" style="position:sticky;top:0;z-index:1000;background:rgba(8,8,10,.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08);font-family:'Manrope',system-ui,sans-serif">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;height:76px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center">
+    <a href="index.html" style="color:#F4F1EA;text-decoration:none;font-weight:700;letter-spacing:.2em;font-size:17px;justify-self:start">TEIGEN J<span style="color:#C9A961">.</span> HECKEL</a>
+    <nav style="justify-self:center;display:flex;gap:30px;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase"><a href="kommandr-os.html" style="color:#F4F1EA;text-decoration:none">Kommandr OS</a><a href="gsd-sound.html" style="color:#9D9DA6;text-decoration:none">GSD Sound</a><a href="teigen-james-merch.html" style="color:#9D9DA6;text-decoration:none">Merch</a><a href="kryptx-store.html" style="color:#9D9DA6;text-decoration:none">KRYPTX</a><a href="blackwire-investments.html" style="color:#9D9DA6;text-decoration:none">BlackWire</a><a href="kryptx-koffee.html" style="color:#9D9DA6;text-decoration:none">Kryptx Koffee</a></nav>
+    <a href="https://www.kommandros.com/auth/signup" style="background:linear-gradient(120deg,#EAD9AC,#C9A961);color:#1a1408;text-decoration:none;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:12px 22px;border-radius:4px;justify-self:end">Start Free Trial</a>
+  </div>
+</header>
+<div id="kos">
+
+
+  <!-- HERO -->
+  <section class="hero" id="top"><div class="wrap">
+    <span class="pill"><span class="dot"></span><span class="eyebrow">The Reseller Operating System</span></span>
+    <h1>Find the deals.<br>Sell everywhere.<br><span class="l3">Scale on autopilot.</span></h1>
+    <p class="lede">Kommandr OS is the AI command center for resellers. Deal Sniper hunts underpriced listings on Facebook + OfferUp <b>24/7</b>, Cross-Posting uploads + schedules your inventory to <b>every marketplace, on the dot</b>, and a gamified profit tracker turns your sales into a game you'll want to keep winning. <b>One flat plan. No credits, no limits.</b></p>
+    <div class="cta-row">
+      <a class="btn btn-gold" href="https://www.kommandros.com/auth/signup">Start 1-Week Free Trial →</a>
+      <a class="btn btn-ghost" href="#pricing">See Pricing</a>
+    </div>
+    <div class="chips">
+      <span class="chip">1-WEEK FREE TRIAL</span><span class="chip">THEN $97/MO FLAT</span>
+      <span class="chip">CANCEL ANYTIME</span><span class="chip">LIVE IN 5 MIN</span>
+    </div>
+  </div></section>
+
+  <!-- STAT BAR -->
+  <section class="statbar"><div class="wrap"><div class="stat-grid">
+    <div class="stat"><div class="big">24/7</div><div class="lab">Always-on coverage</div></div>
+    <div class="stat"><div class="big">4</div><div class="lab">Live AI agents</div></div>
+    <div class="stat"><div class="big">5</div><div class="lab">Marketplaces posted</div></div>
+    <div class="stat"><div class="big">$97</div><div class="lab">One flat plan</div></div>
+  </div></div></section>
+
+  <!-- LIVE -->
+  <section class="live"><div class="wrap">
+    <div class="live-head"><span class="d"></span>LIVE · LAST 7 DAYS</div>
+    <div class="live-grid">
+      <div class="live-card g"><div class="num">84,000</div><div class="cap">Listings scanned</div></div>
+      <div class="live-card c"><div class="num">4,200</div><div class="cap">Posts published</div></div>
+    </div>
+  </div></section>
+
+  <!-- CREW -->
+  <section class="sec alt" id="crew"><div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Meet the Crew</span>
+      <h2>4 agents live. <span class="gold">3 more coming.</span></h2>
+      <p>Four specialists go to work the moment you sign up. Three buyer-messaging agents ship soon — free when they do. Each would cost $40K+/yr as a human hire; you get the whole crew in one flat monthly plan.</p>
+    </div>
+    <div class="grid3">
+      <div class="card c-gold glow-gold"><div class="ctop"><span class="cname">FLETCHER</span><span class="badge b-live">LIVE</span></div><h3>Command Room Officer</h3><p>Your Jarvis-style ops officer. Narrates every move in real time on your dashboard and runs the live radar that pings each deal sniped around your city. The voice of Kommandr OS.</p></div>
+      <div class="card c-cyan glow-mint"><div class="ctop"><span class="cname">PHANTOM</span><span class="badge b-live">LIVE</span></div><h3>Stealth Deal Hunter</h3><p>Silently sweeps Facebook + OfferUp every 30 seconds for underpriced listings matching your filters. Finds the deals before anyone else does — the engine behind Deal Sniper.</p></div>
+      <div class="card c-gold glow-gold"><div class="ctop"><span class="cname">HYDRA</span><span class="badge b-live">LIVE</span></div><h3>Multi-Platform Publisher</h3><p>Pushes every new listing to Facebook, OfferUp, Craigslist, eBay, and your site with human-like pacing so you never get flagged. One listing → everywhere, on the dot.</p></div>
+      <div class="card c-violet"><div class="ctop"><span class="cname">ALPHA</span><span class="badge b-live">LIVE</span></div><h3>The Content Engine</h3><p>With your Predis + GoHighLevel keys, turns one prompt into per-platform captions and a 9:16 Reel, then auto-publishes to every connected channel on a schedule. Powers Content Ops.</p></div>
+      <div class="card c-cyan"><div class="ctop"><span class="cname">VALKYRIE</span><span class="badge b-soon">SOON</span></div><h3>Inbox Reply Warrior</h3><p>Reads every incoming buyer message and drafts a reply in your voice for one-tap send. Part of the gen-2 War Room buyer-messaging suite — shipping in a future update.</p></div>
+      <div class="card c-violet"><div class="ctop"><span class="cname">VIPER</span><span class="badge b-soon">SOON</span></div><h3>First-Strike Closer</h3><p>The second Phantom finds a deal, Viper drafts the opening offer and negotiation script for your approval. Seller-side messaging is a gen-2 feature — coming soon.</p></div>
+      <div class="card c-mut"><div class="ctop"><span class="cname">RAVEN</span><span class="badge b-soon">SOON</span></div><h3>The Resurrector</h3><p>Never lets a lead go cold — drafts timed follow-up nudges for quiet buyers until they convert or opt out. Part of the gen-2 War Room suite — coming soon.</p></div>
+    </div>
+  </div></section>
+
+  <!-- WHAT'S IN THE BOX -->
+  <section class="sec"><div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">What's in the box</span>
+      <h2>Gen 1 ships <span class="mint">today</span>.<br>Gen 2 is <span class="gold">coming soon</span>.</h2>
+      <p>We'd rather ship the engine that pays for itself today than promise the full universe. Every Gen 1 sub unlocks Gen 2 features at the same price the day they release.</p>
+    </div>
+    <div class="grid2">
+      <div class="box gen1">
+        <div class="btop"><span class="ksub">GEN 1 · LIVE</span><span class="badge b-live">AVAILABLE</span></div>
+        <h3>In your account today</h3>
+        <ul>
+          <li><span class="ic">✓</span><span><b>Deal Sniper</b> — Phantom scans FB + OfferUp every 30 seconds</span></li>
+          <li><span class="ic">✓</span><span><b>Cross-Posting</b> — Upload + schedule to every marketplace, on the dot</span></li>
+          <li><span class="ic">✓</span><span><b>Command Room</b> — Fletcher live feed + radar centered on your city</span></li>
+          <li><span class="ic">✓</span><span><b>Inventory & Profit</b> — Gamified profit score + tax-ready CSV export</span></li>
+          <li><span class="ic">✓</span><span><b>Pickup & Sold Tracking</b> — Confirm pickups + sales, cleared daily</span></li>
+          <li><span class="ic">✓</span><span><b>Content Ops</b> — Predis creates + auto-posts your social content</span></li>
+          <li><span class="ic">✓</span><span><b>Crew Comms</b> — Team chat + free voice-to-text</span></li>
+          <li><span class="ic">✓</span><span><b>Mobile Remote</b> — Run your whole stack from your phone</span></li>
+          <li><span class="ic">✓</span><span><b>Affiliate Program</b> — 30% recurring lifetime on every referral</span></li>
+        </ul>
+      </div>
+      <div class="box gen2">
+        <div class="btop"><span class="ksub">GEN 2 · COMING</span><span class="badge b-soon">SOON</span></div>
+        <h3>No extra cost to Gen 1 subs</h3>
+        <ul>
+          <li><span class="ic">◷</span><span><b>War Room</b> — Unified inbox for every buyer + seller thread</span></li>
+          <li><span class="ic">◷</span><span><b>Valkyrie</b> — Drafts buyer-message replies in your voice</span></li>
+          <li><span class="ic">◷</span><span><b>Viper</b> — Drafts the offer + negotiation on every sniped deal</span></li>
+          <li><span class="ic">◷</span><span><b>Raven</b> — Auto-follow-up that revives cold buyers + sellers</span></li>
+          <li><span class="ic">◷</span><span><b>Voice Cloning</b> — Reel voiceovers in your own voice</span></li>
+        </ul>
+        <div class="foot">LOCKED IN AT YOUR GEN 1 PRICE WHEN THEY SHIP</div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- MODULES / SIX TOOLS -->
+  <section class="sec alt" id="modules"><div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Built into Kommandr OS</span>
+      <h2>Six tools. One brain.</h2>
+      <p>A live command room, deal-sourcing, cross-posting with scheduling, a gamified profit tracker, hands-off content, and team comms — wired together in one flat monthly plan. No more stitching five SaaS subscriptions together.</p>
+    </div>
+    <div class="grid3">
+      <div class="card c-gold"><div class="ctop"><span class="cname">Command Room</span><span class="badge b-soon">FLETCHER</span></div><p>Your dashboard's command bridge. Fletcher — a Jarvis-style ops officer — narrates every move in real time, while a live radar centered on your city pings each deal Phantom snipes around you.</p></div>
+      <div class="card c-cyan"><div class="ctop"><span class="cname">Deal Sniper</span><span class="badge b-live">PHANTOM · LIVE</span></div><p>Phantom sweeps Facebook + OfferUp every 30 seconds for underpriced listings matching your filters. Tap Confirm Pickup on any find and it lands on your dashboard's pickup tracker.</p></div>
+      <div class="card c-gold glow-gold"><div class="ctop"><span class="cname">Cross-Posting</span><span class="badge b-live">HYDRA · LIVE</span></div><p>Upload a listing with photos, set an exact time, and Hydra posts it to Facebook, OfferUp, Craigslist, eBay, and your site — on the dot. You get a 'Listing in progress' then 'Listing confirmed' alert.</p></div>
+      <div class="card c-mint"><div class="ctop"><span class="cname" style="color:var(--mint)">Inventory & Profit</span><span class="badge b-live">LIVE</span></div><p>A profit game: a big 'money made this year' score that levels you up Rookie → Empire, a 'DEAL CONFIRMED' kill-shot on every sale, a permanent Records archive, and tax-ready CSV exports.</p></div>
+      <div class="card c-violet"><div class="ctop"><span class="cname">Content Ops</span><span class="badge b-live">ALPHA · LIVE</span></div><p>Alpha turns one product into a week of captions and Reels with your Predis + GoHighLevel keys, then auto-posts them to Instagram, Facebook, TikTok and more on a schedule — completely hands-off.</p></div>
+      <div class="card c-cyan"><div class="ctop"><span class="cname">Crew Comms</span><span class="badge b-live">LIVE</span></div><p>A high-tech team chat to message your employees back and forth — with free voice-to-text (tap, talk, it types) and Direct Hit alerts for sniped deals, successful posts, and pickups.</p></div>
+    </div>
+  </div></section>
+
+  <!-- HOW IT WORKS -->
+  <section class="sec" id="how"><div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">5-Minute Setup</span>
+      <h2>From signup to <span class="gold">running on autopilot.</span></h2>
+      <p>No contracts, no setup calls. Sign up free, connect your marketplaces, and the crew starts sniping deals and posting listings for you.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Sign up free</h3><p>Account in 30 seconds. Look around the whole dashboard before you pay a cent.</p></div>
+      <div class="step"><div class="n">02</div><h3>Install + connect</h3><p>Add the Chrome extension and link your Facebook + OfferUp accounts so the crew can scan deals and post your listings.</p></div>
+      <div class="step"><div class="n">03</div><h3>Start your free trial</h3><p>Enter your card and get 1 week free. After the trial it's $97/mo, charged automatically each month. Cancel anytime.</p></div>
+      <div class="step"><div class="n">04</div><h3>Deploy the crew</h3><p>Phantom snipes deals, Hydra cross-posts, Alpha makes content. Your live dashboard shows every move as it happens.</p></div>
+    </div>
+  </div></section>
+
+  <!-- COMMUNITY -->
+  <section class="sec alt"><div class="wrap">
+    <div class="commun">
+      <div class="eyebrow">🎓 The Kommandr OS Community · Free</div>
+      <h3>Teigen J. Heckel University</h3>
+      <div class="sub"><span class="gold">Free</span> — the home base for Kommandr OS</div>
+      <p>The one place every Kommandr OS operator, fan, and founder hangs out — like a Discord, but ours. The founders teach the system live, drop playbooks, and walk you through everything with free courses. Come learn it, connect with the crew, and grow.</p>
+      <ul>
+        <li><span class="ic">📖</span>Free courses — the founders teach the Kommandr OS system step by step</li>
+        <li><span class="ic">👥</span>Hang with operators and fans — wins, deals, and Q&A every day</li>
+        <li><span class="ic">📡</span>A direct line to the founders building Kommandr OS</li>
+        <li><span class="ic">⚡</span>New plays, drops, and early access first</li>
+      </ul>
+      <a class="btn btn-gold" href="https://zffvfq2cp5ym9mfydwsd.app.clientclub.net/communities/groups/hg-training/home">Join the University — Free</a>
+    </div>
+  </div></section>
+
+  <!-- PRICING -->
+  <section class="sec" id="pricing"><div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Pricing</span>
+      <h2>One plan. <span class="gold">No nonsense.</span></h2>
+      <p>You bring your own Predis + GoHighLevel keys. Kommandr is the engine that wires your reseller business together — Deal Sniper, Cross-Posting, Inventory + tax, and the Predis ↔ GHL pipeline. Cancel anytime.</p>
+    </div>
+    <div class="price-flags">
+      <span><span class="ic">✓</span>1-week free trial</span>
+      <span><span class="ic">✓</span>Flat $97/mo · no usage limits</span>
+      <span><span class="ic">✓</span>Cancel anytime</span>
+    </div>
+    <div class="price-card">
+      <div class="ptop"><div><div class="ksub">KOMMANDR OS</div><h3>Everything included</h3></div><div style="font-size:26px">🚀</div></div>
+      <div class="amt"><span class="v">$97</span><span class="per">/ mo</span></div>
+      <div class="trial">✓ 1-WEEK FREE TRIAL</div>
+      <div class="fine">Try it free for 7 days — card required, charged $97/mo when the trial ends, then automatically every month. Cancel anytime.</div>
+      <ul>
+        <li><span class="ic">✓</span>Deal Sniper · 30s scan cadence</li>
+        <li><span class="ic">✓</span>Cross-Posting · all marketplaces</li>
+        <li><span class="ic">✓</span>Inventory + Profit tracker · tax CSV export</li>
+        <li><span class="ic">✓</span>Content Pipeline · Predis ↔ GHL bridge</li>
+        <li><span class="ic">✓</span>Mobile Remote · run from your phone</li>
+        <li><span class="ic">✓</span>Priority Fly scanning · faster sniper hits</li>
+        <li><span class="ic">✓</span>Multi-account marketplaces · priority support</li>
+        <li><span class="ic">✓</span>Affiliate program · 30% recurring</li>
+      </ul>
+      <a class="btn btn-gold" href="https://www.kommandros.com/auth/signup">Start 1-Week Free Trial</a>
+    </div>
+  </div></section>
+
+  <!-- PAINS -->
+  <section class="sec alt pain"><div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Every pain → solved</span>
+      <h2>The cost of <span class="coral">not</span> having this.</h2>
+      <p>Every problem you have growing a reseller business — Kommandr OS already has a module, an agent, or a workflow that solves it. Here's the matchup.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><span class="ic">◎</span><h3>Hunting deals by hand all day</h3><p>Refreshing Marketplace for underpriced listings is a full-time job. <span class="arrow">→</span> Deal Sniper's Phantom agent sweeps Facebook + OfferUp every 30 seconds and surfaces the ones that match your filters the instant they post.</p></div>
+      <div class="card"><span class="ic">((•))</span><h3>Re-typing each listing into 5 sites</h3><p>Posting the same item to every marketplace by hand eats hours and gets you flagged. <span class="arrow">→</span> Cross-Posting's Hydra agent posts one listing to Facebook, OfferUp, Craigslist, eBay, and your site — on the dot, with human-like pacing.</p></div>
+      <div class="card"><span class="ic">✦</span><h3>You don't post enough content</h3><p>Algorithms reward consistency, but most flippers post twice a week. <span class="arrow">→</span> Content Ops' Alpha agent generates and auto-publishes a week of captions and Reels to every channel — completely hands-off.</p></div>
+      <div class="card"><span class="ic">$</span><h3>No clue what you actually profit</h3><p>Guessing your margins at tax time is brutal. <span class="arrow">→</span> Inventory & Profit logs every pickup and sale, levels up a live profit score, and exports a tax-ready CSV with the numbers your accountant needs.</p></div>
+      <div class="card"><span class="ic">▦</span><h3>Flying blind across ten tabs</h3><p>Deals, listings, pickups — scattered everywhere. <span class="arrow">→</span> The Command Room puts Fletcher's live ops feed and a radar of every sniped deal around you on one screen.</p></div>
+      <div class="card"><span class="ic">◍</span><h3>Your website just sits there</h3><p>A normal site is a brochure. <span class="arrow">→</span> Connect a GoHighLevel site through Kommandr OS that captures leads, books pickups, and auto-follows-up — with your content pushed straight to it.</p></div>
+    </div>
+  </div></section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="sec"><div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">What you're replacing</span>
+      <h2>Cancel five subscriptions.<br>Pay one flat fee.</h2>
+    </div>
+    <div class="cmp"><table>
+      <thead><tr><th>What you used to pay for</th><th>Old monthly</th><th>Replaced by</th></tr></thead>
+      <tbody>
+        <tr><td>Crossposter (Vendoo / List Perfectly)</td><td class="old">$30 – $70</td><td class="rep">Hydra</td></tr>
+        <tr><td>Reels / video tool (Kapwing / Canva Pro)</td><td class="old">$30 – $60</td><td class="rep">Content Ops</td></tr>
+        <tr><td>Social scheduler (Buffer / Hootsuite)</td><td class="old">$15 – $99</td><td class="rep">Content Ops</td></tr>
+        <tr><td>Inventory + profit / tax tracker</td><td class="old">$20 – $50</td><td class="rep">Inventory & Profit</td></tr>
+        <tr><td>Marketplace deal-finder (manual hours)</td><td class="old">$30 – $80</td><td class="rep">Deal Sniper</td></tr>
+        <tr class="total"><td>Total old stack</td><td class="old">$125 – $359/mo</td><td class="rep">→ Kommandr OS $97/mo</td></tr>
+      </tbody>
+    </table></div>
+    <p class="cmp-note">All numbers from public pricing pages. Kommandr OS is a flat $97/mo that covers the full stack — cancel anytime.</p>
+  </div></section>
+
+  <!-- FINAL CTA -->
+  <section class="sec" style="padding-top:0"><div class="wrap">
+    <div class="final">
+      <div class="spark">✦</div>
+      <h2>Stop doing the busywork by hand.</h2>
+      <p>Start your 1-week free trial — then it's a flat $97/mo, charged automatically each month. Card required, no setup call, cancel anytime.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="https://www.kommandros.com/auth/signup">Start 1-Week Free Trial →</a>
+        <a class="btn btn-ghost" href="#pricing">View Plans</a>
+      </div>
+      <div class="flags">FLAT MONTHLY · CANCEL ANYTIME · 30% LIFETIME REFERRAL</div>
+    </div>
+  </div></section>
+
+
+</div>
+<footer style="border-top:1px solid rgba(255,255,255,.08);padding:42px 0;text-align:center;color:#5f5f68;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;background:#060608">© 2026 KOMMANDR OS · A TEIGEN J. HECKEL COMPANY · BUY DIRECT, RUN LIVE</footer>
+</body>
+</html>

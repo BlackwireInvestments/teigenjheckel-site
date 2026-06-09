@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlackWire Investments — The Companies We Build</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#08080A;--ink:#0C0C0F;--panel:#111116;--panel2:#16161c;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.14);
+  --bone:#F4F1EA;--mut:#9D9DA6;--mut2:#5f5f68;--gold:#C9A961;--wire:#6f8ea8;
+  --sheen:linear-gradient(120deg,#EAD9AC,#C9A961 55%,#a8884b);--lift:0 34px 80px -38px rgba(0,0,0,.92)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--bone);font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.7;letter-spacing:.005em;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--gold)}
+.goldtext{background:var(--sheen);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+h1,h2,h3{font-weight:700;letter-spacing:-.022em;line-height:1.05}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:15px 30px;border-radius:4px;border:1px solid transparent;transition:.25s cubic-bezier(.2,.7,.2,1);cursor:pointer;background:none;color:inherit;font-family:inherit}
+.btn-gold{background:var(--sheen);color:#1a1408}.btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 40px -14px rgba(201,169,97,.55)}
+.btn-ghost{border-color:var(--line2);color:var(--bone)}.btn-ghost:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.04)}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,8,10,.66);backdrop-filter:blur(20px) saturate(1.2);border-bottom:1px solid var(--line)}
+.nav .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:76px;max-width:1280px;margin:0 auto;padding:0 32px}.nav .wrap>:first-child{justify-self:start}.nav .wrap>:last-child{justify-self:end}
+.logo{font-weight:700;font-size:17px;letter-spacing:.2em}.logo .dot{color:var(--gold)}
+.navlinks{justify-self:center;display:flex;gap:30px;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}.navlinks a{transition:.2s}.navlinks a:hover,.navlinks a.on{color:var(--bone)}
+.navlinks a.on{color:var(--bone)}.navlinks a:hover{color:var(--bone)}
+@media(max-width:980px){.nav .wrap{display:flex;flex-wrap:wrap;height:auto;padding:12px 20px;gap:10px;align-items:center}.logo,.brand{order:1}.cartbtn,.nav .btn{order:2;margin-left:auto}.navlinks{order:3;width:100%;display:flex;overflow-x:auto;white-space:nowrap;gap:20px;font-size:11px}.navlinks::-webkit-scrollbar{display:none}}
+
+.hero{min-height:94vh;display:flex;align-items:center;position:relative;
+  background:radial-gradient(1100px 700px at 76% -8%,rgba(201,169,97,.12),transparent 56%),radial-gradient(800px 520px at 6% 106%,rgba(111,142,168,.08),transparent 54%)}
+.hero::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(111,142,168,.35),rgba(201,169,97,.4),transparent);opacity:.5}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,97,.4),transparent)}
+.hero .wrap{padding-top:78px;position:relative;z-index:2}
+.hero .eyebrow{display:block;margin-bottom:26px}
+.hero h1{font-size:clamp(48px,8vw,116px);letter-spacing:-.035em}
+.hero h1 .l2{font-family:'Cormorant Garamond',serif;font-weight:600;font-style:italic;letter-spacing:0;background:var(--sheen);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{max-width:580px;margin:30px 0 38px;font-size:18px;color:var(--mut);font-weight:300}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+
+.sec{padding:118px 0}
+.sec.alt{background:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.shead{margin-bottom:54px;max-width:680px}.shead .eyebrow{display:block;margin-bottom:18px}.shead h2{font-size:clamp(32px,4.6vw,54px)}
+.shead p{color:var(--mut);font-size:17px;font-weight:300;margin-top:18px}
+
+.model{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.mcard{border:1px solid var(--line);border-radius:13px;padding:30px;background:var(--bg);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);transition:.3s cubic-bezier(.2,.7,.2,1);position:relative;overflow:hidden}
+.mcard::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% -10%,rgba(255,255,255,.05),transparent 50%)}
+.mcard:hover{transform:translateY(-5px);border-color:rgba(201,165,90,.4);box-shadow:var(--lift)}
+.mcard .ic{font-size:22px;color:var(--gold)}
+.mcard h3{font-size:19px;margin:16px 0 8px}.mcard p{color:var(--mut);font-size:14px;font-weight:300}
+@media(max-width:980px){.model{grid-template-columns:1fr 1fr}}
+
+.portfolio{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.holding{border:1px solid var(--line);border-radius:12px;padding:26px;background:var(--bg);min-height:170px;display:flex;flex-direction:column;justify-content:space-between;transition:.3s cubic-bezier(.2,.7,.2,1);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.holding:hover{transform:translateY(-4px);border-color:var(--line2)}
+.holding .nm{font-weight:600;font-size:18px;letter-spacing:.01em}
+.holding .tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;color:var(--mut2);margin-top:6px}
+.holding .pct{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--gold);margin-top:18px}
+@media(max-width:980px){.portfolio{grid-template-columns:1fr 1fr}}
+
+.partners{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.partner{border:1px solid var(--line);border-radius:12px;min-height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:radial-gradient(120% 90% at 50% 6%,#16161c,#0b0b0d 70%);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);transition:.28s;text-align:center;padding:18px}
+.partner:hover{border-color:rgba(201,165,90,.4);transform:translateY(-3px)}
+.partner .pn{font-weight:600;font-size:15px}
+.partner .ps{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;color:var(--mut2)}
+.partner.ph .pn{color:var(--mut2);font-weight:400;font-style:italic}
+@media(max-width:980px){.partners{grid-template-columns:1fr 1fr}}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.stat{border:1px solid var(--line);border-radius:12px;padding:32px 24px;text-align:center;background:var(--bg);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.stat .n{font-size:46px;font-weight:700;background:var(--sheen);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.stat .l{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--mut2);margin-top:12px}
+@media(max-width:980px){.stats{grid-template-columns:1fr 1fr;gap:14px}}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{border-left:1px solid var(--line2);padding:6px 0 6px 22px}
+.step .n{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:500;color:var(--gold)}
+.step h3{font-size:17px;margin:12px 0 8px}.step p{color:var(--mut);font-size:14px;font-weight:300}
+@media(max-width:980px){.steps{grid-template-columns:1fr 1fr}}
+
+.apply{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center;border:1px solid var(--line2);border-radius:18px;padding:46px;
+  background:radial-gradient(620px 360px at 88% 0%,rgba(201,169,97,.12),transparent),var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.apply h2{font-size:clamp(30px,3.8vw,46px)}
+.apply .i{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;background:var(--sheen);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.apply p{color:var(--mut);font-size:16px;font-weight:300;margin-top:18px}
+.form{display:flex;flex-direction:column;gap:12px}
+.form input,.form textarea,.form select{width:100%;background:var(--panel2);border:1px solid var(--line2);border-radius:8px;padding:14px 16px;color:var(--bone);font-family:inherit;font-size:14px}
+.form input:focus,.form textarea:focus,.form select:focus{outline:none;border-color:var(--gold)}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form textarea{min-height:96px;resize:vertical}
+.form .btn{margin-top:4px}
+.okmsg{display:none;border:1px solid rgba(201,169,97,.4);background:rgba(201,169,97,.08);border-radius:8px;padding:16px;font-size:14px;color:var(--gold)}
+@media(max-width:900px){.apply{grid-template-columns:1fr;gap:30px;padding:30px}.form .two{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);padding:48px 0;text-align:center;color:var(--mut2);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;background:#060608}
+</style>
+</head>
+<body>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="index.html">TEIGEN J<span class="dot">.</span> HECKEL</a>
+  <nav class="navlinks"><a href="kommandr-os.html">Kommandr OS</a><a href="gsd-sound.html">GSD Sound</a><a href="teigen-james-merch.html">Merch</a><a href="kryptx-store.html">KRYPTX</a><a class="on" href="blackwire-investments.html">BlackWire</a><a href="kryptx-koffee.html">Kryptx Koffee</a></nav>
+  <a class="btn btn-gold" href="#apply">Partner with us</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div style="margin-bottom:26px"><svg viewBox="-215 -95 430 175" width="300" xmlns="http://www.w3.org/2000/svg" aria-label="BWI BlackWire Investments" style="max-width:100%;height:auto"><defs><linearGradient id="bwGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#F4E4B8"/><stop offset="52%" stop-color="#C9A961"/><stop offset="100%" stop-color="#8f7338"/></linearGradient><clipPath id="bwT"><rect x="-260" y="-150" width="520" height="158"/></clipPath><clipPath id="bwB"><rect x="-260" y="8" width="520" height="190"/></clipPath></defs><text x="0" y="40" text-anchor="middle" font-family="'Manrope',Arial,sans-serif" font-weight="800" font-size="128" letter-spacing="-5" fill="url(#bwGold)" clip-path="url(#bwT)">BWI</text><text x="0" y="40" text-anchor="middle" font-family="'Manrope',Arial,sans-serif" font-weight="800" font-size="128" letter-spacing="-5" fill="#6f5b30" clip-path="url(#bwB)">BWI</text><path d="M-205 6 C-110 -6 -55 16 0 14 C70 12 135 -4 205 2 C135 12 70 26 0 24 C-55 26 -110 6 -205 14 Z" fill="url(#bwGold)"/></svg></div>
+  <span class="eyebrow">BlackWire Investments · Holding Company</span>
+  <h1>The companies we build.<br><span class="l2">the assets we hold.</span></h1>
+  <p>BlackWire is the parent that holds every Teigen J. Heckel company and partners with operators across America to acquire assets, build revenue, and scale brands — together.</p>
+  <div class="cta"><a class="btn btn-gold" href="#apply">Partner with us</a><a class="btn btn-ghost" href="#portfolio">Our portfolio</a></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="shead"><span class="eyebrow">The Model</span><h2>How BlackWire builds.</h2><p>One parent, many engines. We own, operate, acquire, and partner — turning businesses and assets into compounding revenue.</p></div>
+  <div class="model">
+    <div class="mcard"><div class="ic">◳</div><h3>Hold &amp; Operate</h3><p>BlackWire owns and runs a portfolio of companies under one roof, sharing tools, talent, and leverage.</p></div>
+    <div class="mcard"><div class="ic">⤓</div><h3>Acquire Assets</h3><p>We collect cash-flowing and undervalued assets — inventory, equipment, brands, and businesses.</p></div>
+    <div class="mcard"><div class="ic">⤴</div><h3>Build Revenue</h3><p>We plug holdings into our systems and audience to grow top-line and margin, fast.</p></div>
+    <div class="mcard"><div class="ic">⌘</div><h3>Partner</h3><p>We team with operators and brands — capital, systems, and reach in exchange for upside.</p></div>
+  </div>
+</div></section>
+
+<section class="sec alt" id="portfolio"><div class="wrap">
+  <div class="shead"><span class="eyebrow">Portfolio</span><h2>Companies under BlackWire.</h2><p>The brands we build and scale — all held by BlackWire Investments.</p></div>
+  <div class="portfolio">
+    <div class="holding"><div><div class="nm">Kommandr OS</div><div class="tag">SOFTWARE · SAAS</div></div><div class="pct">HELD · OPERATING</div></div>
+    <div class="holding"><div><div class="nm">KRYPTX</div><div class="tag">APPAREL · RETAIL</div></div><div class="pct">HELD · OPERATING</div></div>
+    <div class="holding"><div><div class="nm">GSD Sound</div><div class="tag">RECORD LABEL</div></div><div class="pct">HELD · OPERATING</div></div>
+    <div class="holding"><div><div class="nm">Heckel Group</div><div class="tag">OPERATIONS</div></div><div class="pct">HELD · OPERATING</div></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="shead"><span class="eyebrow">Partners</span><h2>Who we build with.</h2><p>Operators and brands across America that partner with BlackWire to move assets and grow revenue. Drop your logo in — we're always adding.</p></div>
+  <div class="partners">
+    <div class="partner"><div class="pn">Complete Care Masonry</div><div class="ps">CONSTRUCTION · PARTNER</div></div>
+    <div class="partner"><div class="pn">Heckel Group</div><div class="ps">OPERATIONS · PARTNER</div></div>
+    <div class="partner ph"><div class="pn">National Auto Dealers</div><div class="ps">AUTOMOTIVE · ADD LOGO</div></div>
+    <div class="partner ph"><div class="pn">Furniture Retailers</div><div class="ps">HOME · ADD LOGO</div></div>
+    <div class="partner ph"><div class="pn">Liquidation Networks</div><div class="ps">ASSETS · ADD LOGO</div></div>
+    <div class="partner ph"><div class="pn">Your Brand Here</div><div class="ps">PARTNER WITH US →</div></div>
+  </div>
+</div></section>
+
+<section class="sec alt"><div class="wrap">
+  <div class="shead"><span class="eyebrow">By the Numbers</span><h2>Scale, in figures.</h2></div>
+  <div class="stats">
+    <div class="stat"><div class="n" data-to="4" data-suffix="+">0</div><div class="l">COMPANIES HELD</div></div>
+    <div class="stat"><div class="n" data-to="20" data-suffix="+">0</div><div class="l">PARTNER BRANDS</div></div>
+    <div class="stat"><div class="n" data-to="50">0</div><div class="l">STATES REACH</div></div>
+    <div class="stat"><div class="n" data-to="24" data-suffix="/7">0</div><div class="l">ALWAYS ACQUIRING</div></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="shead"><span class="eyebrow">The Process</span><h2>How partnership works.</h2></div>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><h3>Apply</h3><p>Tell us about your business, assets, or brand and what you're looking to build.</p></div>
+    <div class="step"><div class="n">02</div><h3>Assess</h3><p>We evaluate the fit, the assets, and the upside — fast and straight.</p></div>
+    <div class="step"><div class="n">03</div><h3>Structure</h3><p>We design the partnership — capital, systems, equity, or revenue share.</p></div>
+    <div class="step"><div class="n">04</div><h3>Scale</h3><p>We plug you into BlackWire's tools, talent, and reach and grow it together.</p></div>
+  </div>
+</div></section>
+
+<section class="sec" id="apply"><div class="wrap"><div class="apply">
+  <div>
+    <span class="eyebrow">Work / Partner With Us</span>
+    <h2 style="margin-top:14px">Let's build <span class="i">together.</span></h2>
+    <p>Operator, brand, supplier, or talent — if you've got assets to move or a business to scale, BlackWire wants to talk. Apply below.</p>
+  </div>
+  <div>
+    <form class="form" id="bwform" onsubmit="return submitApp(event)">
+      <div class="two"><input required type="text" placeholder="Full name"><input type="text" placeholder="Company"></div>
+      <div class="two"><input required type="email" placeholder="Email"><input type="tel" placeholder="Phone"></div>
+      <select><option value="">I'm interested in… (select)</option><option>Partnering my business</option><option>Selling / moving assets</option><option>Working with BlackWire</option><option>Investment / capital</option><option>Other</option></select>
+      <textarea placeholder="Tell us what you bring and what you're looking to build…"></textarea>
+      <button class="btn btn-gold" type="submit">Submit application</button>
+      <div class="okmsg" id="okmsg">Application received. The BlackWire team will be in touch. ✓</div>
+    </form>
+  </div>
+</div></div></section>
+
+<footer><div class="wrap">© 2026 BLACKWIRE INVESTMENTS · A TEIGEN J. HECKEL COMPANY · THE BRANDS WE BUILD &amp; SCALE</div></footer>
+
+<script>
+function run(el){const to=+el.dataset.to,suf=el.dataset.suffix||'';let n=0;const step=Math.max(1,Math.round(to/28));
+  const t=setInterval(()=>{n+=step;if(n>=to){n=to;clearInterval(t);}el.textContent=n+suf;},34);}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){run(e.target);io.unobserve(e.target);}}),{threshold:.6});
+document.querySelectorAll('.stat .n').forEach(el=>io.observe(el));
+/* Apply form: wire this to your GoHighLevel form/CRM webhook for real submissions. */
+function submitApp(e){e.preventDefault();document.getElementById('bwform').querySelectorAll('input,select,textarea,button').forEach(x=>{if(x.type!=='button')x.style.display='none'});document.getElementById('okmsg').style.display='block';return false;}
+</script>
+</body>
+</html>

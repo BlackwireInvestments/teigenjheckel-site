@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KRYPTX — Encrypted Luxury</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#070708;--ink:#0C0C0F;--panel:#111116;--panel2:#16161c;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.14);
+  --bone:#F2F0EB;--mut:#9A9AA2;--mut2:#65656d;--gold:#C9A961;
+  --sheen:linear-gradient(120deg,#EAD9AC,#C9A961 55%,#a8884b);--lift:0 30px 70px -34px rgba(0,0,0,.9)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--bone);font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6;letter-spacing:.005em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1320px;margin:0 auto;padding:0 30px}
+.mono{font-family:'JetBrains Mono',monospace}.serif{font-family:'Cormorant Garamond',serif}
+.goldtext{background:var(--sheen);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:15px 30px;border-radius:4px;border:1px solid transparent;cursor:pointer;transition:.2s;background:none;color:inherit;font-family:inherit}
+.btn-light{background:var(--bone);color:#0a0a0b}.btn-light:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--sheen);color:#1a1408}.btn-gold:hover{transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line2)}.btn-ghost:hover{border-color:rgba(255,255,255,.45)}
+
+.bar{background:#0a0a0b;border-bottom:1px solid var(--line);text-align:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;color:var(--gold);padding:9px}
+.nav{position:sticky;top:0;z-index:60;background:rgba(7,7,8,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:76px;max-width:1280px;margin:0 auto;padding:0 32px}.nav .wrap>:first-child{justify-self:start}.nav .wrap>:last-child{justify-self:end}
+.brand{display:inline-flex;align-items:center;gap:11px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;letter-spacing:.16em}
+.navlinks{justify-self:center;display:flex;gap:30px;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}.navlinks a{transition:.2s}.navlinks a:hover,.navlinks a.on{color:var(--bone)}
+.navlinks a:hover{color:var(--bone)}
+.cartbtn{position:relative;display:flex;align-items:center;gap:9px;cursor:pointer;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.cartbtn .cnt{background:var(--sheen);color:#1a120a;font-size:11px;font-weight:700;min-width:20px;height:20px;border-radius:99px;display:grid;place-items:center;padding:0 5px}
+@media(max-width:980px){.nav .wrap{display:flex;flex-wrap:wrap;height:auto;padding:12px 20px;gap:10px;align-items:center}.logo,.brand{order:1}.cartbtn,.nav .btn{order:2;margin-left:auto}.navlinks{order:3;width:100%;display:flex;overflow-x:auto;white-space:nowrap;gap:20px;font-size:11px}.navlinks::-webkit-scrollbar{display:none}}
+
+.hero{padding:70px 0 40px;text-align:center;background:radial-gradient(900px 420px at 50% -10%,rgba(201,169,97,.10),transparent 62%)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(46px,10vw,108px);font-weight:600;letter-spacing:.16em;line-height:1;margin-top:6px}
+.hero .sub{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.45em;margin-top:8px}
+.hero p{color:var(--mut);font-size:17px;font-weight:300;margin:20px auto 0;max-width:560px}
+
+.controls{position:sticky;top:76px;z-index:50;background:linear-gradient(180deg,var(--bg) 76%,transparent);padding:26px 0 24px}
+.toggle{display:flex;justify-content:center;gap:0;margin-bottom:20px}
+.toggle button{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:10px 26px;border:1px solid var(--line2);background:none;color:var(--mut);cursor:pointer;transition:.18s}
+.toggle button:first-child{border-radius:6px 0 0 6px}.toggle button:last-child{border-radius:0 6px 6px 0}.toggle button:not(:first-child){border-left:none}
+.toggle button.on{background:var(--bone);color:#0a0a0b}
+.filters{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+.filt{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:9px 17px;border:1px solid var(--line);border-radius:99px;color:var(--mut);cursor:pointer;transition:.18s;background:none}
+.filt:hover{color:var(--bone);border-color:var(--line2)}.filt.on{background:var(--sheen);color:#1a1408;border-color:transparent}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-bottom:60px}
+.card{border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--ink);cursor:pointer;transition:.3s cubic-bezier(.2,.7,.2,1);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.card:hover{transform:translateY(-6px);border-color:var(--line2);box-shadow:var(--lift)}
+.shot{aspect-ratio:3/4;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(130% 100% at 50% 8%,#212129,#101015 50%,#0a0a0d);border-bottom:1px solid var(--line)}
+.shot::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 32%)}
+.shot::after{content:"";position:absolute;bottom:11%;left:22%;right:22%;height:22px;border-radius:50%;background:radial-gradient(50% 100% at 50% 0,rgba(0,0,0,.55),transparent 70%);filter:blur(7px)}
+.shot .nm{position:relative;z-index:1;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;color:rgba(242,240,235,.32);text-align:center;padding:0 18px}
+.gw{position:absolute;inset:14px 14px 30px;display:flex;align-items:center;justify-content:center;z-index:1}.gw svg{width:100%;height:100%}
+.gmain .gw{position:absolute;inset:16px;bottom:16px}
+.shot .badge{position:absolute;top:11px;left:11px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;padding:4px 9px;border-radius:99px;background:rgba(7,7,8,.6);border:1px solid var(--line2)}
+.shot .badge.best{color:#1a1408;background:var(--sheen);border:none}
+.shot .qa{position:absolute;left:11px;right:11px;bottom:11px;z-index:2;background:rgba(242,240,235,.95);color:#0a0a0b;text-align:center;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:11px;border-radius:5px;opacity:0;transform:translateY(8px);transition:.26s}
+.card:hover .qa{opacity:1;transform:translateY(0)}
+.meta{padding:15px 17px}
+.meta .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.meta .nm2{font-size:14px;font-weight:500;line-height:1.3}
+.meta .pr{font-size:14px;font-weight:600;white-space:nowrap}
+.meta .cat{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--mut2);margin-top:5px}
+.meta .sw{display:flex;gap:5px;margin-top:10px}
+.meta .sw i{width:13px;height:13px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:inline-block}
+@media(max-width:920px){.grid{grid-template-columns:1fr 1fr;gap:12px}}
+
+/* conversion sections */
+.sec{padding:90px 0}
+.sec.alt{background:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.shead{text-align:center;max-width:680px;margin:0 auto 50px}
+.shead .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px}
+.shead h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4.4vw,50px);font-weight:600}
+.shead p{color:var(--mut);font-size:17px;font-weight:300;margin-top:16px}
+.std{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.scard{border:1px solid var(--line);border-radius:13px;padding:32px;background:var(--bg);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.scard .ic{font-size:22px;color:var(--gold)}
+.scard h3{font-size:18px;margin:16px 0 9px}.scard p{color:var(--mut);font-size:14px;font-weight:300}
+@media(max-width:920px){.std{grid-template-columns:1fr}}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev{border:1px solid var(--line);border-radius:12px;padding:26px;background:var(--bg)}
+.rev .st{color:var(--gold);letter-spacing:3px;font-size:13px}
+.rev p{font-size:15px;font-weight:300;margin:12px 0 16px;line-height:1.6}
+.rev .by{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--mut2)}
+@media(max-width:920px){.reviews{grid-template-columns:1fr}}
+
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.76);backdrop-filter:blur(8px);z-index:200;display:none;align-items:center;justify-content:center;padding:22px}
+.overlay.open{display:flex}
+.modal{background:var(--panel2);border:1px solid var(--line2);border-radius:14px;max-width:920px;width:100%;display:grid;grid-template-columns:1.05fr 1fr;overflow:hidden;max-height:92vh;box-shadow:0 50px 120px -40px rgba(0,0,0,.9)}
+.gallery{padding:18px;display:flex;flex-direction:column;gap:12px;background:#0c0c0e}
+.gmain{flex:1;min-height:300px;border-radius:9px;position:relative;display:flex;align-items:center;justify-content:center;background:radial-gradient(130% 100% at 50% 6%,#23232b,#101015 52%,#0a0a0d)}
+.gmain::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 30%)}
+.gmain .lbl{position:relative;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;color:rgba(242,240,235,.4)}
+.gthumbs{display:flex;gap:8px}
+.gthumbs button{flex:1;aspect-ratio:1;border-radius:6px;border:1px solid var(--line);background:radial-gradient(120% 100% at 50% 10%,#1c1c22,#0c0c0e);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;color:var(--mut2);transition:.15s}
+.gthumbs button.on{border-color:var(--gold)}
+.mbody{padding:30px;overflow-y:auto}
+.mbody .x{position:absolute;top:14px;right:18px;font-size:20px;color:var(--mut);cursor:pointer;background:none;border:none;z-index:3}
+.mbody .cat{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--gold)}
+.mbody h3{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;margin:6px 0 4px}
+.mbody .price{font-size:19px;font-weight:600;margin-bottom:14px}
+.mbody .desc{color:var(--mut);font-size:14px;font-weight:300;line-height:1.7;margin-bottom:18px}
+.mbody .detail{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:rgba(201,169,97,.05);margin-bottom:20px}
+.mbody .detail .ic{color:var(--gold);font-size:14px}.mbody .detail span{font-size:12.5px;color:var(--mut)}
+.lbl2{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--mut2);margin-bottom:10px}
+.colors{display:flex;gap:10px;margin-bottom:20px}
+.colors button{width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.25);cursor:pointer;position:relative;transition:.15s}
+.colors button.on{box-shadow:0 0 0 2px var(--bg),0 0 0 3px var(--gold)}
+.sizes{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.size{min-width:46px;height:42px;padding:0 11px;border:1px solid var(--line2);border-radius:5px;display:grid;place-items:center;font-size:13px;cursor:pointer;transition:.15s;background:none;color:var(--bone)}
+.size:hover{border-color:rgba(255,255,255,.5)}.size.on{background:var(--bone);color:#0a0a0b;border-color:var(--bone)}
+.qtyrow{display:flex;gap:14px;margin-bottom:22px}
+.stepper{display:flex;align-items:center;border:1px solid var(--line2);border-radius:5px}
+.stepper button{width:38px;height:42px;background:none;border:none;color:var(--bone);font-size:17px;cursor:pointer}
+.stepper span{width:42px;text-align:center}
+.add{width:100%}
+@media(max-width:720px){.modal{grid-template-columns:1fr}.gallery{display:none}}
+
+.drawer{position:fixed;top:0;right:0;height:100%;width:420px;max-width:92vw;background:var(--panel2);border-left:1px solid var(--line2);z-index:210;transform:translateX(100%);transition:.34s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column}
+.drawer.open{transform:translateX(0)}
+.dhead{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;border-bottom:1px solid var(--line)}
+.dhead h3{font-size:13px;letter-spacing:.22em;font-family:'JetBrains Mono',monospace;font-weight:500}
+.ditems{flex:1;overflow-y:auto;padding:8px 24px}
+.ditem{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.ditem .th{width:54px;height:68px;border-radius:6px;flex:0 0 54px;background:radial-gradient(120% 100% at 50% 8%,#1c1c22,#0b0b0d)}
+.ditem .n{font-size:14px;font-weight:500}.ditem .s{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mut2);margin:3px 0 8px}
+.ditem .row{display:flex;align-items:center;justify-content:space-between}
+.miniq{display:flex;align-items:center;gap:8px;font-size:13px}.miniq button{width:24px;height:24px;border:1px solid var(--line2);border-radius:5px;background:none;color:var(--bone);cursor:pointer}
+.rm{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut2);cursor:pointer;background:none;border:none;text-decoration:underline}
+.empty{text-align:center;color:var(--mut2);font-size:13px;padding:60px 0}
+.dfoot{padding:22px 24px;border-top:1px solid var(--line)}
+.dfoot .subtotal{display:flex;justify-content:space-between;font-size:16px;font-weight:600;margin-bottom:6px}
+.dfoot .note{font-size:11px;color:var(--mut2);margin-bottom:16px}.dfoot .btn{width:100%}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:205;display:none}.scrim.open{display:block}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(140%);background:var(--bone);color:#0a0a0b;font-size:12px;font-weight:600;letter-spacing:.06em;padding:14px 22px;border-radius:7px;z-index:300;transition:.3s}.toast.show{transform:translateX(-50%) translateY(0)}
+footer{border-top:1px solid var(--line);padding:44px 0;text-align:center;color:var(--mut2);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="garmentgold" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EAD9AC"/><stop offset="100%" stop-color="#9a7c42"/></linearGradient></defs></svg>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><svg width="22" height="25" viewBox="-80 -90 160 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="kxN" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EAD9AC"/><stop offset="55%" stop-color="#C9A961"/><stop offset="100%" stop-color="#9a7c42"/></linearGradient></defs><g stroke="url(#kxN)" stroke-width="11" fill="none"><path d="M-9 -78 L-9 78 M-9 0 L-66 -78 M-9 0 L-66 78 M9 -78 L9 78 M9 0 L66 -78 M9 0 L66 78"/></g></svg>KRYPTX</a>
+  <nav class="navlinks"><a href="kommandr-os.html">Kommandr OS</a><a href="gsd-sound.html">GSD Sound</a><a href="teigen-james-merch.html">Merch</a><a class="on" href="kryptx-store.html">KRYPTX</a><a href="blackwire-investments.html">BlackWire</a><a href="kryptx-koffee.html">Kryptx Koffee</a></nav>
+  <div class="cartbtn" onclick="openCart()">Cart <span class="cnt" id="cnt">0</span></div>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <svg width="92" height="104" viewBox="-80 -90 160 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;margin:0 auto 6px"><defs><linearGradient id="kxH" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0%" stop-color="#F6E7BC"/><stop offset="28%" stop-color="#D9BE7E"/><stop offset="52%" stop-color="#B89750"/><stop offset="74%" stop-color="#9A7C42"/><stop offset="100%" stop-color="#E7D199"/></linearGradient></defs><g stroke="url(#kxH)" stroke-width="9" fill="none"><path d="M-9 -78 L-9 78 M-9 0 L-66 -78 M-9 0 L-66 78 M9 -78 L9 78 M9 0 L66 -78 M9 0 L66 78"/></g></svg>
+  <h1>KRYPTX</h1>
+  <div class="sub goldtext" style="padding-left:.45em">MAISON · ENCRYPTED LUXURY</div>
+  <div style="margin-top:18px"><span style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.3em;color:var(--gold);border:1px solid rgba(201,169,97,.5);border-radius:99px;padding:9px 18px;background:rgba(201,169,97,.06)">DROP 001 · OUT NOW</span></div>
+  <p>For the ones who set the standard. Designer-grade fabric, embroidered in silence. You don't follow the room — you change it.</p>
+</div></section>
+
+<div class="controls"><div class="wrap">
+  <div class="toggle" id="toggle">
+    <button data-g="all" class="on">All</button><button data-g="M">Men</button><button data-g="W">Women</button>
+  </div>
+  <div class="filters" id="filters">
+    <button class="filt on" data-f="all">All</button>
+    <button class="filt" data-f="Golf">Golf</button>
+    <button class="filt" data-f="Streetwear">Streetwear</button>
+    <button class="filt" data-f="Fitness & Sport">Fitness &amp; Sport</button>
+    <button class="filt" data-f="Outerwear">Outerwear</button>
+    <button class="filt" data-f="Accessories">Accessories</button>
+  </div>
+</div></div>
+
+<div class="wrap"><div class="grid" id="grid"></div></div>
+
+<section class="sec alt"><div class="wrap">
+  <div class="shead"><span class="eyebrow">The KRYPTX Standard</span><h2>Made for more than the moment.</h2><p>Every piece is built to the standard the room hasn't met yet.</p></div>
+  <div class="std">
+    <div class="scard"><div class="ic">✶</div><h3>Designer-grade fabric</h3><p>Heavyweight cottons, technical blends, and brushed fleece sourced to luxury spec — weight you feel the second you put it on.</p></div>
+    <div class="scard"><div class="ic">✦</div><h3>Embroidered, never printed</h3><p>The KRYPTX mark is tonal-stitched and embroidered into every piece. Quiet on the outside. Unmistakable up close.</p></div>
+    <div class="scard"><div class="ic">◆</div><h3>Numbered drops</h3><p>Limited runs, serialized. When a drop sells out, it's archived for good. You won't see it on everyone.</p></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="shead"><span class="eyebrow">Worn by the relentless</span><h2>The uniform of the ambitious.</h2></div>
+  <div class="reviews">
+    <div class="rev"><div class="st">★★★★★</div><p>"Walked in a meeting wearing the hoodie and instantly felt like the most put-together person in the room. The weight is insane."</p><div class="by">— MARCUS R. · VERIFIED</div></div>
+    <div class="rev"><div class="st">★★★★★</div><p>"Best quality I've owned, full stop. The embroidery detail is so clean. Already came back for the golf line."</p><div class="by">— SOPHIA L. · VERIFIED</div></div>
+    <div class="rev"><div class="st">★★★★★</div><p>"People ask me where it's from every time. It just looks expensive — because it is, and it's worth it."</p><div class="by">— D. CARTER · VERIFIED</div></div>
+  </div>
+</div></section>
+
+<section class="sec alt"><div class="wrap"><div class="shead">
+  <span class="eyebrow">Drop 001</span><h2>Wear the standard. Become it.</h2>
+  <p>Numbered, embroidered, and built to outlast every trend. Once this drop is gone, it's archived for good.</p>
+  <div style="margin-top:26px"><a class="btn btn-gold" href="#grid" onclick="document.getElementById('grid').scrollIntoView({behavior:'smooth'});return false;">Shop the drop</a></div>
+</div></div></section>
+
+<!-- modal -->
+<div class="overlay" id="overlay"><div class="modal" style="position:relative">
+  <button class="x" onclick="closeModal()">✕</button>
+  <div class="gallery"><div class="gmain" id="gmain"></div><div class="gthumbs" id="g-thumbs"></div></div>
+  <div class="mbody">
+    <div class="cat" id="m-cat"></div><h3 id="m-name"></h3><div class="price" id="m-price"></div>
+    <div class="desc" id="m-desc"></div>
+    <div class="detail"><span class="ic">✦</span><span id="m-detail"></span></div>
+    <div class="lbl2">COLOR — <span id="m-colorname" style="color:var(--bone)"></span></div>
+    <div class="colors" id="m-colors"></div>
+    <div class="lbl2">SIZE</div>
+    <div class="sizes" id="m-sizes"></div>
+    <div class="lbl2">QUANTITY</div>
+    <div class="qtyrow"><div class="stepper"><button onclick="mq(-1)">−</button><span id="m-qty">1</span><button onclick="mq(1)">+</button></div></div>
+    <button class="btn btn-light add" onclick="addFromModal()">Add to cart</button>
+  </div>
+</div></div>
+
+<div class="scrim" id="scrim" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer">
+  <div class="dhead"><h3>YOUR CART</h3><button style="background:none;border:none;color:var(--mut);font-size:19px;cursor:pointer" onclick="closeCart()">✕</button></div>
+  <div class="ditems" id="ditems"></div>
+  <div class="dfoot"><div class="subtotal"><span>Subtotal</span><span id="subtotal">$0</span></div><div class="note">Shipping &amp; taxes at checkout. Free over $150.</div><button class="btn btn-light" onclick="checkout()">Checkout</button></div>
+</aside>
+<div class="toast" id="toast"></div>
+<footer><div class="wrap">© 2026 KRYPTX · MAISON · ENCRYPTED LUXURY · A TEIGEN J. HECKEL COMPANY</div></footer>
+
+<script>
+const CART_CHECKOUT_URL="";
+const C={onyx:'#101013',bone:'#E9E2D2',steel:'#8A9099',oxblood:'#5b1a22',gold:'#C9A961',sand:'#C9B79A',forest:'#2f3a30',navy:'#1b2436',white:'#f3f1ea'};
+const cn={onyx:'Onyx',bone:'Bone',steel:'Steel',oxblood:'Oxblood',gold:'Gold',sand:'Sand',forest:'Forest',navy:'Navy',white:'White'};
+const A=['S','M','L','XL','XXL'],W=['XS','S','M','L','XL'],P=['28','30','32','34','36'],OS=['OS'];
+const PRODUCTS=[
+ {id:'g1',n:'Tour Performance Polo',g:'M',cat:'Golf',pr:118,b:'BEST SELLER',co:['onyx','bone','navy'],sz:A,d:'Four-way-stretch piqué with a tailored break and a collar that holds its shape through 18.',det:'Tonal embroidered KRYPTX at the left chest + sleeve cuff.'},
+ {id:'g2',n:'Pro Golf Trouser',g:'M',cat:'Golf',pr:148,b:'DROP 001',co:['onyx','steel','sand'],sz:P,d:'Featherweight technical trouser with a clean taper. Moves like sweats, reads like a suit.',det:'Embroidered K at the back-right pocket.'},
+ {id:'g3',n:"Women's Tour Polo",g:'W',cat:'Golf',pr:112,b:'DROP 001',co:['bone','onyx','sand'],sz:W,d:'Sculpted stretch polo with a flattering collar line and UPF protection.',det:'Tonal embroidered KRYPTX at the chest.'},
+ {id:'g4',n:'Pleated Golf Skort',g:'W',cat:'Golf',pr:118,b:'NEW',co:['onyx','bone'],sz:W,d:'Pleated skort with hidden shorts and zip pocket. Course to clubhouse.',det:'Embroidered K at the hem.'},
+ {id:'s1',n:'Onyx Heavyweight Tee',g:'M',cat:'Streetwear',pr:68,b:'BEST SELLER',co:['onyx','bone','steel'],sz:A,d:'14oz boxy-fit tee that drapes like armor. The everyday piece people notice.',det:'Tonal back-yoke embroidery + woven satin label.'},
+ {id:'s2',n:'Cipher Hoodie',g:'M',cat:'Streetwear',pr:148,b:'BEST SELLER',co:['onyx','bone','oxblood'],sz:A,d:'Heavyweight brushed fleece, structured hood, weighted drawcords. Luxury you live in.',det:'Embroidered X monogram + hidden encrypted serial inside the hem.'},
+ {id:'s3',n:'Redacted Crewneck',g:'M',cat:'Streetwear',pr:98,b:'DROP 001',co:['onyx','steel','sand'],sz:A,d:'Premium loopback crew with the redacted-bar device across the chest.',det:'Embroidered redaction bar + KRYPTX at nape.'},
+ {id:'s4',n:'Encrypted Cargo Pant',g:'M',cat:'Streetwear',pr:128,b:'DROP 001',co:['onyx','forest','sand'],sz:P,d:'Tactical-luxe cargo with matte hardware and a tapered, elevated silhouette.',det:'Embroidered K + monogram zip-pull.'},
+ {id:'s5',n:"Women's Cropped Hoodie",g:'W',cat:'Streetwear',pr:128,b:'BEST SELLER',co:['onyx','bone','oxblood'],sz:W,d:'Cropped brushed-fleece hoodie with a sculpted hem. Soft, heavy, addictive.',det:'Embroidered X monogram at chest.'},
+ {id:'s6',n:'Oversized Tee Dress',g:'W',cat:'Streetwear',pr:98,b:'DROP 001',co:['onyx','bone'],sz:W,d:'Longline heavyweight tee dress. Effortless, expensive, undeniable.',det:'Tonal embroidered KRYPTX at hem.'},
+ {id:'s7',n:'High-Rise Cargo',g:'W',cat:'Streetwear',pr:118,b:'NEW',co:['onyx','sand','forest'],sz:W,d:'High-rise tapered cargo that sculpts and elongates. Street with intention.',det:'Embroidered K at back pocket.'},
+ {id:'f1',n:'Performance Training Tee',g:'M',cat:'Fitness & Sport',pr:58,b:'DROP 001',co:['onyx','steel','navy'],sz:A,d:'Sweat-wicking, breathable knit with a sharp athletic cut. Train like it matters.',det:'Reflective embroidered K at chest.'},
+ {id:'f2',n:'Tech Joggers',g:'M',cat:'Fitness & Sport',pr:98,b:'BEST SELLER',co:['onyx','steel'],sz:A,d:'Tapered tech-fleece joggers with zip ankles. Gym, travel, everywhere.',det:'Embroidered K + monogram drawcord.'},
+ {id:'f3',n:'Compression Long-Sleeve',g:'M',cat:'Fitness & Sport',pr:78,b:'DROP 001',co:['onyx','navy'],sz:A,d:'Second-skin compression with muscle-mapping panels. Performance that looks the part.',det:'Tonal embroidered K at cuff.'},
+ {id:'f4',n:'Sculpt Leggings',g:'W',cat:'Fitness & Sport',pr:98,b:'BEST SELLER',co:['onyx','oxblood','steel'],sz:W,d:'Buttery high-rise compression that sculpts and never sheers. The leggings you reach for first.',det:'Embroidered K at hip.'},
+ {id:'f5',n:'Sculpt Sports Bra',g:'W',cat:'Fitness & Sport',pr:58,b:'DROP 001',co:['onyx','oxblood','bone'],sz:W,d:'Medium-high support with a clean, elevated line. Studio to street.',det:'Tonal embroidered K at band.'},
+ {id:'f6',n:'Training Tank',g:'W',cat:'Fitness & Sport',pr:48,b:'DROP 001',co:['onyx','bone','steel'],sz:W,d:'Featherweight tank with a racer cut that moves with you.',det:'Embroidered K at hem.'},
+ {id:'o1',n:'Encrypted Track Jacket',g:'M',cat:'Outerwear',pr:188,b:'BEST SELLER',co:['onyx','steel'],sz:A,d:'Full-zip track jacket with steel-tone trim and tonal taping. The throw-on that runs the room.',det:'Embroidered KRYPTX at chest + nape.'},
+ {id:'o2',n:'Onyx Puffer',g:'M',cat:'Outerwear',pr:248,b:'NEW',co:['onyx'],sz:A,d:'Matte-shell puffer, blacked-out hardware, engineered warmth. Quiet power.',det:'Embroidered K + monogram zip-pulls.'},
+ {id:'o3',n:"Women's Track Jacket",g:'W',cat:'Outerwear',pr:178,b:'DROP 001',co:['onyx','bone'],sz:W,d:'Cropped track jacket with a sculpted waist and tonal taping.',det:'Embroidered KRYPTX at chest.'},
+ {id:'a1',n:'Monogram Cap',g:'U',cat:'Accessories',pr:48,b:'BEST SELLER',co:['onyx','bone','steel'],sz:OS,d:'Structured 6-panel cap with matte buckle. Minimal, sharp, everywhere.',det:'Raised embroidered X monogram.'},
+ {id:'a2',n:'Cipher Beanie',g:'U',cat:'Accessories',pr:38,b:'DROP 001',co:['onyx','bone','oxblood'],sz:OS,d:'Fine-gauge ribbed cuff beanie. Understated and essential.',det:'Woven cipher tag + tonal K.'},
+ {id:'a3',n:'Leather Cardholder',g:'U',cat:'Accessories',pr:68,b:'DROP 001',co:['onyx','oxblood'],sz:OS,d:'Full-grain leather cardholder, edge-painted, debossed. Carries quiet status.',det:'Debossed + gold-foil K.'},
+ {id:'a4',n:'Crossbody Bag',g:'U',cat:'Accessories',pr:148,b:'NEW',co:['onyx'],sz:OS,d:'Minimal technical crossbody with matte hardware. High-fashion utility.',det:'Embroidered K + engraved monogram clasp.'},
+ {id:'a5',n:'Gold-Tone Pendant',g:'U',cat:'Accessories',pr:88,b:'DROP 001',co:['gold'],sz:OS,d:'Weighty gold-tone KRYPTX pendant on a fine box chain. The detail people clock.',det:'3D KRYPTX monogram pendant.'},
+ {id:'a6',n:'Ribbed Socks · 3-Pack',g:'U',cat:'Accessories',pr:28,b:'DROP 001',co:['onyx','bone'],sz:OS,d:'Combed-cotton ribbed crew socks. The small upgrade you feel all day.',det:'Embroidered K at cuff.'}
+];
+const VIEWS=['FRONT','BACK','DETAIL','ON-MODEL'];
+let cart=[],cur=null,curColor=null,curSize=null,curQty=1,gen='all',filter='all';
+const $=id=>document.getElementById(id);const money=n=>'$'+n.toLocaleString();
+function kmark(x,y,s){return '<g transform="translate('+x+','+y+') scale('+(s*0.12)+')"><g stroke="url(#garmentgold)" stroke-width="11" fill="none"><path d="M-9 -78 L-9 78 M-9 0 L-66 -78 M-9 0 L-66 78 M9 -78 L9 78 M9 0 L66 -78 M9 0 L66 78"/></g></g>';}
+const SHAPES={
+ tee:F=>`<g transform="translate(100,120) scale(.95)"><path d="M-50 -56 L-32 -66 Q0 -50 32 -66 L50 -56 L78 -24 L60 -4 L48 -16 L48 96 L-48 96 L-48 -16 L-60 -4 L-78 -24 Z" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/><path d="M-32 -66 Q0 -44 32 -66" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="2"/>${kmark(20,-22,1)}</g>`,
+ hoodie:F=>`<g transform="translate(100,122) scale(.9)"><path d="M-52 -50 Q0 -84 52 -50 L80 -22 L62 -2 L50 -14 L50 96 L-50 96 L-50 -14 L-62 -2 L-80 -22 Z" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/><path d="M-30 -50 Q0 -30 30 -50" fill="rgba(0,0,0,.25)" stroke="rgba(0,0,0,.35)" stroke-width="1.5"/><rect x="-30" y="34" width="60" height="40" rx="4" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="1.5"/><path d="M-10 -28 L-8 6 M10 -28 L8 6" stroke="rgba(0,0,0,.3)" stroke-width="2"/>${kmark(22,-8,1)}</g>`,
+ polo:F=>`<g transform="translate(100,120) scale(.95)"><path d="M-50 -56 L-32 -64 L-10 -50 L10 -50 L32 -64 L50 -56 L78 -24 L60 -4 L48 -16 L48 96 L-48 96 L-48 -16 L-60 -4 L-78 -24 Z" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/><path d="M-32 -64 L-6 -36 L0 -22 L6 -36 L32 -64" fill="rgba(0,0,0,.18)" stroke="rgba(0,0,0,.35)" stroke-width="1.5"/><path d="M0 -22 L0 16" stroke="rgba(0,0,0,.3)" stroke-width="1.5"/>${kmark(20,-8,1)}</g>`,
+ pants:F=>`<g transform="translate(100,128) scale(.92)"><path d="M-40 -80 L40 -80 L42 -56 L30 110 L8 110 L0 -10 L-8 110 L-30 110 L-42 -56 Z" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/><path d="M-40 -72 L40 -72" stroke="rgba(0,0,0,.35)" stroke-width="2"/>${kmark(18,84,.9)}</g>`,
+ jacket:F=>`<g transform="translate(100,122) scale(.92)"><path d="M-50 -56 L-30 -66 L-6 -52 L6 -52 L30 -66 L50 -56 L78 -24 L60 -4 L48 -16 L48 96 L-48 96 L-48 -16 L-60 -4 L-78 -24 Z" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/><path d="M-30 -66 L-4 -40 L4 -40 L30 -66" fill="rgba(0,0,0,.18)" stroke="rgba(0,0,0,.35)" stroke-width="1.5"/><path d="M0 -40 L0 96" stroke="rgba(0,0,0,.4)" stroke-width="2" stroke-dasharray="3 3"/>${kmark(-32,-8,1)}</g>`,
+ cap:F=>`<g transform="translate(72,150) scale(.8)"><path d="M-50 10 Q-44 -58 28 -58 Q70 -56 74 0 L74 10 Z" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/><path d="M74 10 Q120 12 128 32 L72 32 Q74 22 74 10 Z" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6" opacity=".85"/>${kmark(-4,-20,1.1)}</g>`,
+ beanie:F=>`<g transform="translate(100,124)"><path d="M-46 16 Q-46 -52 0 -52 Q46 -52 46 16 Z" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/><rect x="-50" y="14" width="100" height="26" rx="6" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/>${kmark(-8,18,1)}</g>`,
+ top:F=>`<g transform="translate(100,120)"><path d="M-44 -42 L-24 -56 L-8 -42 L8 -42 L24 -56 L44 -42 L38 34 L-38 34 Z" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/><path d="M-8 -42 Q0 -32 8 -42" fill="none" stroke="rgba(0,0,0,.3)" stroke-width="1.5"/>${kmark(16,-16,.9)}</g>`,
+ bag:F=>`<g transform="translate(100,120)"><path d="M-34 -34 Q0 -64 34 -34" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="3"/><rect x="-40" y="-30" width="80" height="86" rx="8" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/><path d="M-40 -8 L40 -8" stroke="rgba(0,0,0,.3)" stroke-width="1.5"/>${kmark(-8,8,1.1)}</g>`,
+ card:F=>`<g transform="translate(100,120)"><rect x="-46" y="-28" width="92" height="60" rx="7" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/><rect x="-38" y="-38" width="58" height="40" rx="5" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.14)" stroke-width="1.2"/>${kmark(6,0,1.1)}</g>`,
+ pendant:F=>`<g transform="translate(100,118)"><path d="M-60 -40 Q0 -10 60 -40" fill="none" stroke="rgba(201,169,97,.55)" stroke-width="2"/><g transform="translate(0,16) scale(.42)"><g stroke="url(#garmentgold)" stroke-width="13" fill="none"><path d="M-9 -78 L-9 78 M-9 0 L-66 -78 M-9 0 L-66 78 M9 -78 L9 78 M9 0 L66 -78 M9 0 L66 78"/></g></g></g>`,
+ socks:F=>`<g transform="translate(100,124)"><path d="M-36 -50 L-14 -50 L-14 18 L18 18 L18 44 L-36 44 Z" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6"/><path d="M6 -50 L28 -50 L28 18 L60 18 L60 44 L6 44 Z" fill="${F}" stroke="rgba(255,255,255,.16)" stroke-width="1.6" opacity=".82"/>${kmark(-32,-44,.8)}</g>`
+};
+function shapeOf(p){const n=p.n.toLowerCase();if(p.cat==='Accessories'){if(n.includes('cap'))return'cap';if(n.includes('beanie'))return'beanie';if(n.includes('cardholder'))return'card';if(n.includes('bag'))return'bag';if(n.includes('pendant'))return'pendant';if(n.includes('sock'))return'socks';return'bag';}if(n.includes('polo'))return'polo';if(n.includes('hoodie'))return'hoodie';if(n.includes('jacket')||n.includes('puffer'))return'jacket';if(n.includes('legging')||n.includes('jogger')||n.includes('cargo')||n.includes('trouser')||n.includes('skort')||n.includes('pant'))return'pants';if(n.includes('bra')||n.includes('tank'))return'top';return'tee';}
+function garment(t,F){return '<svg viewBox="0 0 200 256" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" aria-hidden="true">'+(SHAPES[t]||SHAPES.tee)(F)+'</svg>';}
+let curView='FRONT';
+function renderGmain(){$('gmain').innerHTML='<div class="gw">'+garment(shapeOf(cur),C[curColor])+'</div><span class="lbl" id="g-lbl">'+curView+'</span>';}
+function visible(){return PRODUCTS.filter(p=>(gen==='all'||p.g===gen||p.g==='U')&&(filter==='all'||p.cat===filter));}
+function swDots(co){return co.slice(0,4).map(c=>`<i style="background:${C[c]}"></i>`).join('');}
+function render(){
+  const v=visible();
+  $('grid').innerHTML=v.length?v.map(p=>`
+   <div class="card" onclick="openModal('${p.id}')">
+     <div class="shot"><span class="badge ${p.b==='BEST SELLER'?'best':''}">${p.b||(p.g==='W'?'WOMEN':p.g==='M'?'MEN':'UNISEX')}</span><div class="gw">${garment(shapeOf(p),C[p.co[0]])}</div><div class="qa">Quick view</div></div>
+     <div class="meta"><div class="top"><div><div class="nm2">${p.n}</div><div class="cat">${p.cat.toUpperCase()}</div></div><div class="pr">${money(p.pr)}</div></div><div class="sw">${swDots(p.co)}</div></div>
+   </div>`).join(''):'<div style="grid-column:1/-1;text-align:center;color:var(--mut2);padding:60px 0">No pieces in this category yet.</div>';
+}
+document.querySelectorAll('#toggle button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#toggle button').forEach(x=>x.classList.remove('on'));b.classList.add('on');gen=b.dataset.g;render();});
+document.querySelectorAll('.filt').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filt').forEach(x=>x.classList.remove('on'));b.classList.add('on');filter=b.dataset.f;render();});
+function openModal(id){cur=PRODUCTS.find(p=>p.id===id);curColor=cur.co[0];curSize=cur.sz.length===1?cur.sz[0]:null;curQty=1;
+  $('m-cat').textContent=cur.cat.toUpperCase()+' · '+(cur.g==='W'?'WOMEN':cur.g==='M'?'MEN':'UNISEX');
+  $('m-name').textContent=cur.n;$('m-price').textContent=money(cur.pr);$('m-desc').textContent=cur.d;$('m-detail').textContent=cur.det;$('m-qty').textContent='1';
+  $('m-colors').innerHTML=cur.co.map((c,i)=>`<button style="background:${C[c]}" class="${i===0?'on':''}" onclick="pickColor(this,'${c}')" aria-label="${cn[c]}"></button>`).join('');
+  $('m-colorname').textContent=cn[curColor];
+  $('m-sizes').innerHTML=cur.sz.map(s=>`<button class="size ${cur.sz.length===1?'on':''}" onclick="pickSize(this,'${s}')">${s}</button>`).join('');
+  $('g-thumbs').innerHTML=VIEWS.map((v,i)=>`<button class="${i===0?'on':''}" onclick="setView(this,'${v}')">${v}</button>`).join('');
+  curView='FRONT';renderGmain();$('overlay').classList.add('open');}
+function closeModal(){$('overlay').classList.remove('open');}
+$('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))closeModal();});
+function pickColor(el,c){document.querySelectorAll('#m-colors button').forEach(x=>x.classList.remove('on'));el.classList.add('on');curColor=c;$('m-colorname').textContent=cn[c];renderGmain();}
+function pickSize(el,s){document.querySelectorAll('#m-sizes .size').forEach(x=>x.classList.remove('on'));el.classList.add('on');curSize=s;}
+function setView(el,v){document.querySelectorAll('#g-thumbs button').forEach(x=>x.classList.remove('on'));el.classList.add('on');curView=v;renderGmain();}
+function mq(d){curQty=Math.max(1,curQty+d);$('m-qty').textContent=curQty;}
+function addFromModal(){if(!curSize){toast('Select a size');return;}
+  const k=cur.id+curColor+curSize,ex=cart.find(i=>i.k===k);if(ex)ex.qty+=curQty;else cart.push({k,id:cur.id,n:cur.n,pr:cur.pr,color:cn[curColor],size:curSize,qty:curQty});
+  closeModal();updateCart();toast('Added to cart');openCart();}
+function updateCart(){$('cnt').textContent=cart.reduce((a,i)=>a+i.qty,0);
+  $('ditems').innerHTML=cart.length?cart.map((i,x)=>`<div class="ditem"><div class="th"></div><div style="flex:1"><div class="n">${i.n}</div><div class="s">${i.color} · ${i.size}</div><div class="row"><div class="miniq"><button onclick="chq(${x},-1)">−</button>${i.qty}<button onclick="chq(${x},1)">+</button></div><button class="rm" onclick="rm(${x})">remove</button></div></div></div>`).join(''):'<div class="empty">Your cart is empty.</div>';
+  $('subtotal').textContent=money(cart.reduce((a,i)=>a+i.pr*i.qty,0));}
+function chq(x,d){cart[x].qty+=d;if(cart[x].qty<1)cart.splice(x,1);updateCart();}
+function rm(x){cart.splice(x,1);updateCart();}
+function openCart(){$('drawer').classList.add('open');$('scrim').classList.add('open');}
+function closeCart(){$('drawer').classList.remove('open');$('scrim').classList.remove('open');}
+function checkout(){if(!cart.length){toast('Your cart is empty');return;}if(CART_CHECKOUT_URL){location.href=CART_CHECKOUT_URL;return;}toast('Connect Stripe to enable checkout');}
+let tt;function toast(m){$('toast').textContent=m;$('toast').classList.add('show');clearTimeout(tt);tt=setTimeout(()=>$('toast').classList.remove('show'),2200);}
+render();updateCart();
+</script>
+</body>
+</html>
